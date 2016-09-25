@@ -1,10 +1,6 @@
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {Component} from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
 
-@Component({
-	selector: 'my-app',
-	template: '<h>aaa</h>'
-})
-class AppComponent{}
 
-bootstrap(AppComponent)
+const platform = platformBrowserDynamic();
+platform.bootstrapModule(AppModule);
