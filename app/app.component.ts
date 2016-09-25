@@ -1,7 +1,11 @@
 import {Component} from '@angular/core';
 
+
 @Component({
 	selector: 'my-app',
-	template: '<h1>aaa</h1>'
+	template: `<h1>{{title}}</h1>
+				<mysub-app></mysub-app>`
 })
-export class AppComponent{}
+export class AppComponent{
+	title="Title from app.component";
+}
