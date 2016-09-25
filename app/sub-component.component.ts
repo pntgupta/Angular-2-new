@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {model_name} from './sub-component';
+import {MocksData} from './mocks';
 
 @Component({
 	selector: 'mysub-app',
@@ -6,27 +8,17 @@ import {Component} from '@angular/core';
 	styleUrls: ['app/sub-component.component.css']
 })
 export class subcomponentComponent{
-	obj=[{
-		name: "Punit",
-		age: "22",
-		comments: "Awesome!"
-	},
-	{
-		name: "Prateek",
-		age: "25",
-		comments: "Study more!"
-	},
-	{
-		name: "Manas",
-		age: "24",
-		comments: "Gotta gym!"
-	}]
-
+	obj : model_name[];
+	
 	ageSum(){
 		var sum=0;
 		for(var i=0;i<this.obj.length;i++){
 			sum+=parseInt(this.obj[i].age);
 		}
 		return sum;
+	}
+
+	ngOnInit(){
+		this.obj=MocksData;
 	}
 }

@@ -9,23 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var mocks_1 = require('./mocks');
 var subcomponentComponent = (function () {
     function subcomponentComponent() {
-        this.obj = [{
-                name: "Punit",
-                age: "22",
-                comments: "Awesome!"
-            },
-            {
-                name: "Prateek",
-                age: "25",
-                comments: "Study more!"
-            },
-            {
-                name: "Manas",
-                age: "24",
-                comments: "Gotta gym!"
-            }];
     }
     subcomponentComponent.prototype.ageSum = function () {
         var sum = 0;
@@ -33,6 +19,9 @@ var subcomponentComponent = (function () {
             sum += parseInt(this.obj[i].age);
         }
         return sum;
+    };
+    subcomponentComponent.prototype.ngOnInit = function () {
+        this.obj = mocks_1.MocksData;
     };
     subcomponentComponent = __decorate([
         core_1.Component({
