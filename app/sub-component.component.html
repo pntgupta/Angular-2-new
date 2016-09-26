@@ -1,6 +1,6 @@
 <p>Age Sum : {{ageSum()}}</p>
 <ul>
-	<li *ngFor="let obj_name of obj"><h3 class="name">{{obj_name.name | uppercase}}</h3>
+	<li *ngFor="let obj_name of obj"><h3 class="name" [class.pg]="obj_name.name.toLowerCase()=='punit'" (click)="func_name(obj_name.name)">{{obj_name.name | uppercase}}</h3>
 	<p *ngIf="obj_name.age>23">{{obj_name.age}} - Age > 23</p>
 	<p *ngIf="obj_name.age<=23">{{obj_name.age}} - Age <= 23</p>
 	<p class="comment">{{obj_name.comments}}</p></li>

@@ -16,9 +16,13 @@ var subcomponentComponent = (function () {
     subcomponentComponent.prototype.ageSum = function () {
         var sum = 0;
         for (var i = 0; i < this.obj.length; i++) {
-            sum += parseInt(this.obj[i].age);
+            sum += this.obj[i].age;
         }
         return sum;
+    };
+    subcomponentComponent.prototype.func_name = function (name) {
+        if (name.toLowerCase() == 'punit')
+            alert('Good choice!');
     };
     subcomponentComponent.prototype.ngOnInit = function () {
         this.obj = mocks_1.MocksData;

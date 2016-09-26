@@ -13,9 +13,14 @@ export class subcomponentComponent{
 	ageSum(){
 		var sum=0;
 		for(var i=0;i<this.obj.length;i++){
-			sum+=parseInt(this.obj[i].age);
+			sum+=this.obj[i].age;
 		}
 		return sum;
+	}
+
+	func_name(name){
+		if(name.toLowerCase()=='punit')
+		alert('Good choice!');
 	}
 
 	ngOnInit(){
