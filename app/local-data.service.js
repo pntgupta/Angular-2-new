@@ -16,7 +16,6 @@ var localDataService = (function () {
         this.http = http;
     }
     localDataService.prototype.getLocalData = function () {
-        debugger;
         return this.http.get('app/data.json').map(function (response) { return response.json().obj1; });
     };
     localDataService = __decorate([

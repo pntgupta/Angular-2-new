@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {model_name} from './sub-component';
 import {localDataService} from './local-data.service';
 
+
 @Component({
 	selector: 'mysub-app',
 	templateUrl: 'app/sub-component.component.html',
@@ -12,6 +13,7 @@ export class subcomponentComponent{
 
 	ageSum(){
 		var sum=0;
+		if(this.obj!=undefined)
 		for(var i=0;i<this.obj.length;i++){
 			sum+=this.obj[i].age;
 		}
@@ -23,10 +25,9 @@ export class subcomponentComponent{
 		alert('Good choice!');
 	}
 
-	//constructor(private xyz : localDataService){}
+	constructor(private localDataServiceInstance : localDataService){}
 
 	ngOnInit(){
-		var localDataServiceInstance = new localDataService();
-		localDataServiceInstance.getLocalData().subscribe( temp_var => this.obj = temp_var);
+		this.localDataServiceInstance.getLocalData().subscribe( temp_var => this.obj = temp_var);
 	}
 }

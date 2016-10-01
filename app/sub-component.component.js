@@ -11,24 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var local_data_service_1 = require('./local-data.service');
 var subcomponentComponent = (function () {
-    function subcomponentComponent() {
+    function subcomponentComponent(localDataServiceInstance) {
+        this.localDataServiceInstance = localDataServiceInstance;
     }
     subcomponentComponent.prototype.ageSum = function () {
         var sum = 0;
-        for (var i = 0; i < this.obj.length; i++) {
-            sum += this.obj[i].age;
-        }
+        if (this.obj != undefined)
+            for (var i = 0; i < this.obj.length; i++) {
+                sum += this.obj[i].age;
+            }
         return sum;
     };
     subcomponentComponent.prototype.func_name = function (name) {
         if (name.toLowerCase() == 'punit')
             alert('Good choice!');
     };
-    //constructor(private xyz : localDataService){}
     subcomponentComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var localDataServiceInstance = new local_data_service_1.localDataService();
-        localDataServiceInstance.getLocalData().subscribe(function (temp_var) { return _this.obj = temp_var; });
+        this.localDataServiceInstance.getLocalData().subscribe(function (temp_var) { return _this.obj = temp_var; });
     };
     subcomponentComponent = __decorate([
         core_1.Component({
@@ -36,7 +36,7 @@ var subcomponentComponent = (function () {
             templateUrl: 'app/sub-component.component.html',
             styleUrls: ['app/sub-component.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [local_data_service_1.localDataService])
     ], subcomponentComponent);
     return subcomponentComponent;
 }());
