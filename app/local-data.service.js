@@ -9,23 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var sub_component_component_1 = require('./sub-component.component');
-var local_data_service_1 = require('./local-data.service');
-var AppModule = (function () {
-    function AppModule() {
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
+var localDataService = (function () {
+    function localDataService(http) {
+        this.http = http;
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, sub_component_component_1.subcomponentComponent],
-            bootstrap: [app_component_1.AppComponent],
-            providers: [local_data_service_1.localDataService]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    localDataService.prototype.getLocalData = function () {
+        debugger;
+        return this.http.get('app/data.json').map(function (response) { return response.json().obj1; });
+    };
+    localDataService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], localDataService);
+    return localDataService;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.localDataService = localDataService;
+//# sourceMappingURL=local-data.service.js.map

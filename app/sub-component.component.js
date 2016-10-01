@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mocks_1 = require('./mocks');
+var local_data_service_1 = require('./local-data.service');
 var subcomponentComponent = (function () {
     function subcomponentComponent() {
     }
@@ -24,8 +24,11 @@ var subcomponentComponent = (function () {
         if (name.toLowerCase() == 'punit')
             alert('Good choice!');
     };
+    //constructor(private xyz : localDataService){}
     subcomponentComponent.prototype.ngOnInit = function () {
-        this.obj = mocks_1.MocksData;
+        var _this = this;
+        var localDataServiceInstance = new local_data_service_1.localDataService();
+        localDataServiceInstance.getLocalData().subscribe(function (temp_var) { return _this.obj = temp_var; });
     };
     subcomponentComponent = __decorate([
         core_1.Component({

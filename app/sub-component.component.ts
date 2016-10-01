@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {model_name} from './sub-component';
-import {MocksData} from './mocks';
+import {localDataService} from './local-data.service';
 
 @Component({
 	selector: 'mysub-app',
@@ -9,7 +9,7 @@ import {MocksData} from './mocks';
 })
 export class subcomponentComponent{
 	obj : model_name[];
-	
+
 	ageSum(){
 		var sum=0;
 		for(var i=0;i<this.obj.length;i++){
@@ -23,7 +23,10 @@ export class subcomponentComponent{
 		alert('Good choice!');
 	}
 
+	//constructor(private xyz : localDataService){}
+
 	ngOnInit(){
-		this.obj=MocksData;
+		var localDataServiceInstance = new localDataService();
+		localDataServiceInstance.getLocalData().subscribe( temp_var => this.obj = temp_var);
 	}
 }
